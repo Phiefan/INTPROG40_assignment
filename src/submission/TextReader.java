@@ -13,7 +13,7 @@ public class TextReader {
             stop = analyser.analysis(read);
         }
 
-        System.out.println("You've read in "+analyser.getRows()+" rows of text " +
-                "consisting of "+analyser.getCharacters()+" characters.");
+        System.out.println("The program has read "+analyser.getRows()+" rows of text\n"+
+                "These rows consist of "+analyser.getCharacters()+" characters.");
     }
 }
