@@ -45,9 +45,12 @@ public class TestTextAnalyser {
         int expected = 5;
 
         // Act
-        for (int i = 0; i < 5; i++) {
-            analyser.textAnalysis("Test on");
-        }
+        analyser.textAnalysis("Test on");
+        analyser.textAnalysis("Continue");
+        analyser.textAnalysis("Still going");
+        analyser.textAnalysis("Almost there");
+        analyser.textAnalysis("Test end");
+
         int actual = analyser.getRows();
 
         // Assert
@@ -85,12 +88,12 @@ public class TestTextAnalyser {
     public void testGetCharactersAfterAnalyses() {
         // Arrange
         TextAnalyser analyser = new TextAnalyser();
-        int expected = 7 * 3;
+        int expected = 7 + 8 + 8;
 
         // Act
-        for (int i = 0; i < 3; i++) {
-            analyser.textAnalysis("Test on");
-        }
+        analyser.textAnalysis("Test on");
+        analyser.textAnalysis("Continue");
+        analyser.textAnalysis("Test end");
 
         int actual = analyser.getCharacters();
 
@@ -119,6 +122,19 @@ public class TestTextAnalyser {
 
         // Act
         boolean actual = analyser.stopCheck("stop");
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testStopInSentence() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        boolean expected = false;
+
+        // Act
+        boolean actual = analyser.stopCheck("A sentence with a stop");
 
         // Assert
         assertEquals(expected, actual);
