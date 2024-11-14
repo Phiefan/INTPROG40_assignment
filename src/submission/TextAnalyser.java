@@ -1,19 +1,28 @@
 package submission;
 
 public class TextAnalyser {
-    private int rows, characters;
+    private int rows, characters, words;
+    private String longestWord;
 
     public void textAnalysis(String str) {
         this.rows++;
         this.characters += str.length();
+        this.words += sentenceAnalysis(str);
     }
 
-    public int getRows() {
-        return this.rows;
+    public int sentenceAnalysis(String str) {
+        String[] strArray = str.split(" ");
+
+        for (String s : strArray) {
+            setLongestWord(s);
+        }
+        return strArray.length;
     }
 
-    public int getCharacters() {
-        return this.characters;
+    public void setLongestWord(String str) {
+        if (this.longestWord == null || str.length() >this.longestWord.length()){
+            this.longestWord = str;
+        }
     }
 
     public boolean stopCheck(String str) {
@@ -30,5 +39,21 @@ public class TextAnalyser {
         }
 
         return stop;
+    }
+
+    public int getRows() {
+        return this.rows;
+    }
+
+    public int getCharacters() {
+        return this.characters;
+    }
+
+    public int getWords() {
+        return this.words;
+    }
+
+    public String getLongestWord() {
+        return this.longestWord;
     }
 }

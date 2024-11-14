@@ -157,6 +157,111 @@ public class TestTextAnalyser {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testGetWords() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 0;
+
+        // Act
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetWordsAfterAnalysis() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 1;
+
+        // Act
+        analyser.analysis("Testing");
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetWordsAfterAnalyses() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 5;
+
+        // Act
+        analyser.analysis("Testing");
+        analyser.analysis("that");
+        analyser.analysis("words");
+        analyser.analysis("are");
+        analyser.analysis("counted");
+
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetWordsInSentence() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 4;
+
+        // Act
+        int actual = analyser.sentenceAnalysis("Words in a sentence");
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetWordsInSentences() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 5 + 5 + 6;
+
+        // Act
+        analyser.analysis("Testing that program can handle");
+        analyser.analysis("reading more than one sentence");
+        analyser.analysis("and that words are handled correctly");
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetLongestWord(){
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        String expected = "longest";
+
+        // Act
+        analyser.analysis("Test to get longest word");
+        String actual = analyser.getLongestWord();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetLongestWordAfterAnalyses(){
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        String expected = "sentences";
+
+        // Act
+        analyser.analysis("Test to get longest word");
+        analyser.analysis("in a scenario with more sentences");
+        analyser.analysis("the longest should be the same as expected");
+        String actual = analyser.getLongestWord();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
     // Personally don't want a case-sensitive program
     @Test
     public void testStopOneUppercase() {
