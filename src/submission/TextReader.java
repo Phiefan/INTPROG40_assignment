@@ -13,7 +13,9 @@ public class TextReader {
             stop = analyser.analysis(read);
         }
 
-        System.out.println("The program has read "+analyser.getRows()+" rows of text\n"+
-                "These rows consist of "+analyser.getCharacters()+" characters.");
+        System.out.println("The program has read "+analyser.getRows()+" rows of text.\n"+
+                "These rows has a total of "+analyser.getCharacters()+" characters " +
+                "and consists of "+analyser.getWords()+" words.\n" +
+                "The longest word read is ["+analyser.getLongestWord()+"].");
     }
 }
