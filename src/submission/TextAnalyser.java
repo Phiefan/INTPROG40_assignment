@@ -4,6 +4,13 @@ public class TextAnalyser {
     private int rows, characters, words;
     private String longestWord;
 
+    public TextAnalyser(){
+        this.rows = 0;
+        this.characters = 0;
+        this.words = 0;
+        this.longestWord = "";
+    }
+
     public void textAnalysis(String str) {
         this.rows++;
         this.characters += str.length();
@@ -16,11 +23,12 @@ public class TextAnalyser {
         for (String s : strArray) {
             setLongestWord(s);
         }
+
         return strArray.length;
     }
 
     public void setLongestWord(String str) {
-        if (this.longestWord == null || str.length() >this.longestWord.length()){
+        if (str.length() >this.longestWord.length()){
             this.longestWord = str;
         }
     }
