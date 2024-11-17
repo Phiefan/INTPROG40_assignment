@@ -7,16 +7,18 @@ public class TextReader {
         Scanner scanner = new Scanner(System.in);
         TextAnalyser analyser = new TextAnalyser();
 
-        while (!analyser.getStopState()){
+        do {
             String read = scanner.nextLine();
             analyser.analyze(read);
-        }
+        } while (!analyser.getStopState());
 
         System.out.println("\nRESULT");
-        System.out.printf("Rows: %s\n" +
-                "Characters: %s\n" +
-                "Words: %s\n" +
-                "Longest word: %s\n",
+        System.out.printf("""
+                        Rows:           %s
+                        Characters:     %s
+                        Words:          %s
+                        Longest word: %s
+                        """,
                 analyser.getRows(), analyser.getCharacters(),
                 analyser.getWords(), analyser.getLongestWord());
     }
