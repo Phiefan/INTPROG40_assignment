@@ -22,7 +22,9 @@ public class TextAnalyser {
             String[] strArray = str.split(" ");
             this.words += strArray.length;
             for (String s : strArray) {
-                this.longestWord = (s.length() > this.longestWord.length()) ? s : this.longestWord;
+                if (s.length() > this.longestWord.length()) {
+                    this.longestWord = s;
+                }
             }
         }
     }
@@ -43,7 +45,7 @@ public class TextAnalyser {
         return this.longestWord;
     }
 
-    public boolean getStopState(){
+    public boolean getStopState() {
         return this.stopState;
     }
 }
