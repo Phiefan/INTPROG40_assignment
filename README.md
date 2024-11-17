@@ -1,5 +1,7 @@
 Sorry in advance! Been awhile since I wrote in English.
 
+First and foremost, if you reading this is my examinator: BranchOne is the implementation of part 2 of the assignment and BranchTwo is the further developed version for part 3.
+
 This program is the submisson of the final assignment of the course INTPRO40 (Introduction to programming) of the Software tester program of EC Utbildning.
 
 The purpose of the program is to read text, line for line, from the terminal until the user writes stop 
