@@ -130,6 +130,34 @@ public class TestTextAnalyser {
     }
 
     @Test
+    public void testStopOneUppercase() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        boolean expected = true;
+
+        // Act
+        analyser.analyze("stOp");
+        boolean actual = analyser.getStopState();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testStopAllUppercase() {
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        boolean expected = true;
+
+        //
+        analyser.analyze("STOP");
+        boolean actual = analyser.getStopState();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void testStopInSentence() {
         // Arrange
         TextAnalyser analyser = new TextAnalyser();
@@ -144,7 +172,7 @@ public class TestTextAnalyser {
     }
 
     @Test
-    public void testStopAnalysis() {
+    public void testStopAnalyses() {
         // Arrange
         TextAnalyser analyser = new TextAnalyser();
         boolean expected = true;
@@ -153,7 +181,7 @@ public class TestTextAnalyser {
         analyser.analyze("Test on");
         analyser.analyze("continue");
         analyser.analyze("end after this");
-        analyser.analyze("STOP");
+        analyser.analyze("Stop");
 
         boolean actual = analyser.getStopState();
 
@@ -262,35 +290,6 @@ public class TestTextAnalyser {
         analyser.analyze("in a scenario with more sentences");
         analyser.analyze("the longest should be the same as expected");
         String actual = analyser.getLongestWord();
-
-        // Assert
-        assertEquals(expected, actual);
-    }
-
-    // Personally don't want a case-sensitive program
-    @Test
-    public void testStopOneUppercase() {
-        // Arrange
-        TextAnalyser analyser = new TextAnalyser();
-        boolean expected = true;
-
-        // Act
-        analyser.analyze("Stop");
-        boolean actual = analyser.getStopState();
-
-        // Assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testStopAllUppercase() {
-        // Arrange
-        TextAnalyser analyser = new TextAnalyser();
-        boolean expected = true;
-
-        //
-        analyser.analyze("STOP");
-        boolean actual = analyser.getStopState();
 
         // Assert
         assertEquals(expected, actual);
