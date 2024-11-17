@@ -6,16 +6,18 @@ public class TextReader {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         TextAnalyser analyser = new TextAnalyser();
-        boolean stop = false;
 
-        while (!stop){
+        while (!analyser.getStopState()){
             String read = scanner.nextLine();
-            stop = analyser.analysis(read);
+            analyser.analyze(read);
         }
 
-        System.out.println("The program has read "+analyser.getRows()+" rows of text.\n"+
-                "These rows has a total of "+analyser.getCharacters()+" characters " +
-                "and consists of "+analyser.getWords()+" words.\n" +
-                "The longest word read is ["+analyser.getLongestWord()+"].");
+        System.out.println("\nRESULT");
+        System.out.printf("Rows: %s\n" +
+                "Characters: %s\n" +
+                "Words: %s\n" +
+                "Longest word: %s\n",
+                analyser.getRows(), analyser.getCharacters(),
+                analyser.getWords(), analyser.getLongestWord());
     }
 }
