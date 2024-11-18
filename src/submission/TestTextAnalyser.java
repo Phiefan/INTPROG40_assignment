@@ -144,7 +144,7 @@ public class TestTextAnalyser {
     }
 
     @Test
-    public void testStopAnalysis() {
+    public void testStopAnalyses() {
         // Arrange
         TextAnalyser analyser = new TextAnalyser();
         boolean expected = true;
