@@ -19,6 +19,7 @@ public class TextAnalyser {
         } else {
             this.rows++;
             this.characters += str.length();
+            str = str.strip();      // Thank you, Deborah!
             String[] strArray = str.split(" ");
             this.words += strArray.length;
             for (String s : strArray) {

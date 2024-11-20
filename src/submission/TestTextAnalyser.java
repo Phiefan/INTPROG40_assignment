@@ -294,4 +294,52 @@ public class TestTextAnalyser {
         // Assert
         assertEquals(expected, actual);
     }
+
+    /*
+    My classmate Deborah informed me about them using Strip() in their implementation and I question them about it.
+    I did some testing on the side and figured out which situations it's good for and
+    that I had not thought of those situations before this conversation.
+     */
+    @Test
+    public void testBlankSpaceFirst(){
+        /*
+        Before the amended Strip() in the analyze method in the TextAnalyser
+        I would have had an actual value of 4 in this test as the sentence provided as input
+        would have resulted in the following array:
+        " Testing is on " --> [, Testing, is, on]
+        With the Strip() method I get instead the following:
+        " Testing is on " --> [Testing, is, on]
+         */
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        int expected = 3;
+
+        // Act
+        analyser.analyze(" Testing is on ");
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBlankSpacesStop(){
+        /*
+        I've chosen to keep my stop check non-sensitive so this test will give an actual value of false.
+        If I wanted to have my program stop with this input I would have to change the following code in the analyze-method:
+        if (str.equalsIgnoreCase("stop")) --> if (str.Strip().equalsIgnoreCase("stop"))
+        If the requirement of the assignment was defined differently, aka blank spaces are not to be counted as characters
+        then you could have used Strip() before the if-else statement and the characters per words would have been handled in a loop.
+         */
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+        boolean expected = false;
+
+        // Act
+        analyser.analyze("  stop  ");
+        boolean actual = analyser.getStopState();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
 }
