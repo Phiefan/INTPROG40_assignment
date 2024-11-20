@@ -6,10 +6,16 @@ public class TextReader {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         TextAnalyser analyser = new TextAnalyser();
+        boolean stopState = false;
 
-        while (!analyser.getStopState()){
+        while (!stopState){
             String read = scanner.nextLine();
-            analyser.analyze(read);
+
+            if (analyser.checkStop(read)){
+                stopState = true;
+            }else {
+                analyser.analyze(read);
+            }
         }
 
         System.out.println("The program has read "+analyser.getRows()+" rows of text\n"+

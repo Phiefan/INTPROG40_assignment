@@ -108,8 +108,7 @@ public class TestTextAnalyser {
         boolean expected = false;
 
         // Act
-        analyser.analyze("Checking");
-        boolean actual = analyser.getStopState();
+        boolean actual = analyser.checkStop("Checking");
 
         // Assert
         assertEquals(expected, actual);
@@ -122,8 +121,7 @@ public class TestTextAnalyser {
         boolean expected = true;
 
         // Act
-        analyser.analyze("stop");
-        boolean actual = analyser.getStopState();
+        boolean actual = analyser.checkStop("stop");
 
         // Assert
         assertEquals(expected, actual);
@@ -136,26 +134,7 @@ public class TestTextAnalyser {
         boolean expected = false;
 
         // Act
-        analyser.analyze("A sentence with a stop");
-        boolean actual = analyser.getStopState();
-
-        // Assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testStopAnalyses() {
-        // Arrange
-        TextAnalyser analyser = new TextAnalyser();
-        boolean expected = true;
-
-        // Act
-        analyser.analyze("Test on");
-        analyser.analyze("continue");
-        analyser.analyze("end after this");
-        analyser.analyze("STOP");
-
-        boolean actual = analyser.getStopState();
+        boolean actual = analyser.checkStop("A sentence with a stop");
 
         // Assert
         assertEquals(expected, actual);
@@ -169,8 +148,7 @@ public class TestTextAnalyser {
         boolean expected = true;
 
         // Act
-        analyser.analyze("stOp");
-        boolean actual = analyser.getStopState();
+        boolean actual = analyser.checkStop("stOp");
 
         // Assert
         assertEquals(expected, actual);
@@ -183,8 +161,7 @@ public class TestTextAnalyser {
         boolean expected = true;
 
         // Act
-        analyser.analyze("STOP");
-        boolean actual = analyser.getStopState();
+        boolean actual = analyser.checkStop("STOP");
 
         // Assert
         assertEquals(expected, actual);
